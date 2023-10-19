@@ -14,6 +14,12 @@ browser.runtime.onMessage.addListener((response) => {
 		case "update":
 			update_tab(response);
 			break;
+		case "only_update":
+			if (custom_title !== response.title || custom_title != response.default) {
+				custom_title = response.title;
+				update();
+			}
+			break;
 	}
 });
 

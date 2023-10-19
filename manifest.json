@@ -1,25 +1,45 @@
 {
 	"manifest_version": 2,
-	"name": "Rename Tab",
-	"version": "1.1",
+	"name": "Rename Tab regex",
+	"version": "1.3",
 	"description": "Allows you to rename tabs",
-	
+	"icons": {
+		"48": "icon.png"
+	},
+	"browser_action": {
+		"default_title": "Edit regex rules"
+	},
 	"permissions": [
 		"activeTab",
-		"tabs", 
+		"tabs",
 		"menus",
 		"storage",
 		"<all_urls>"
 	],
-	
 	"background": {
-		"scripts": ["background.js"]
+		"scripts": [
+			"background.js"
+		]
 	},
-
 	"content_scripts": [
 		{
-			"matches": ["<all_urls>"],
-			"js": ["tab_renamer.js"]
+			"matches": [
+				"<all_urls>"
+			],
+			"js": [
+				"tab_renamer.js"
+			]
 		}
-	]
+	],
+	"options_ui": {
+		"page": "rules/rules.html",
+		"browser_style": true,
+		"open_in_tab": true
+	},
+	"browser_specific_settings": {
+		"gecko": {
+			"id": "aeghn@outlook.com",
+			"strict_min_version": "57.0a1"
+		}
+	}
 }
